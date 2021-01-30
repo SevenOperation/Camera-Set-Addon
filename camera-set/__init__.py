@@ -2,7 +2,7 @@ bl_info = {
 	"name": "Camera Render Set",
 	"author": "Valdemar Lindberg",
 	"version": (0, 1, 0),
-	"blender": (2, 79, 0),
+	"blender": (2, 91, 2),
 	"location": "Properties > Render",
 	"description": "A tool for creating a set of cameras that can be rendered in a single render command",
 	"warning": "",
@@ -105,10 +105,10 @@ def register():
 
 	# Create menus.
 	if bpy.app.version >= (2, 80, 0):
-		bpy.types.RENDER_PT_render.append(menu_func_render)
+		bpy.types.RENDER_PT_context.append(menu_func_render)
 		bpy.types.TOPBAR_MT_render.append(menu_func_render)
 	else:
-		bpy.types.RENDER_PT_render.append(menu_func_render)
+		bpy.types.RENDER_PT_context.append(menu_func_render)
 		bpy.types.INFO_MT_render.append(menu_func_render)
 
 	# bpy.app.handlers.scene_update_post.append(on_scene_update)

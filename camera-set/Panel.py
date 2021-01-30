@@ -77,11 +77,11 @@ class SCENE_PT_cameraset(Panel, CameraSetPanel):
 		                    camera_sett, "affected_settings_idx", rows=3)
 		col = row.column()
 		sub = col.column(align=True)
-		sub.operator("scene.render_camera_set_add", icon='ZOOMIN', text="")
-		sub.operator("scene.render_camera_set_remove", icon='ZOOMOUT', text="")
+		sub.operator("scene.render_camera_set_add", icon='ZOOM_IN', text="")
+		sub.operator("scene.render_camera_set_remove", icon='ZOOM_OUT', text="")
 		#col.prop(camera_sett, "use_single_layer", icon_only=True)
 		
-		col = layout.split(percentage=0.5)
+		col = layout.split(factor=0.5)
 		col.operator("scene.render_camera_set_select", text="Add Selected Camera")
 		col.operator("scene.render_camera_set_deselect", text="Remove Selected Camera")
 
