@@ -67,7 +67,6 @@ class RenderCameraData(bpy.types.PropertyGroup):
 # 	name="RenderSetting", description="Rendering setting.", type=bpy.types.CyclesRenderSettings)
 
 class RenderCameraSetSceneSettings(bpy.types.PropertyGroup):
-	#
 	cameras = CollectionProperty(
 		type=RenderCameraData, name="cameras", description="")
 	affected_settings_idx = IntProperty()
@@ -142,10 +141,10 @@ def unregister():
 
 	# Remove layouts.
 	if bpy.app.version >= (2, 80, 0):
-		bpy.types.RENDER_PT_render.remove(menu_func_render)
+		bpy.types.RENDER_PT_context.remove(menu_func_render)
 		bpy.types.TOPBAR_MT_render.remove(menu_func_render)
 	else:
-		bpy.types.RENDER_PT_render.remove(menu_func_render)
+		bpy.types.RENDER_PT_context.remove(menu_func_render)
 		bpy.types.INFO_MT_render.remove(menu_func_render)
 
 	# Delete pointer of the camera set.
