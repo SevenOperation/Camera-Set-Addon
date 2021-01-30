@@ -203,9 +203,10 @@ class RenderCameraSet(Operator):
 		wm = bpy.context.window_manager
 		self.timer = wm.event_timer_add(0.5, window=context.window)
 		wm.modal_handler_add(self)
+		self._run(context)
 
-		self.thread = Thread(target=self._run, args=(context,))
-		self.thread.start()
+		#self.thread = Thread(target=self._run, args=(context,))
+		#self.thread.start()
 		return {'RUNNING_MODAL'}
 
 	def _run(self, context):
@@ -306,16 +307,16 @@ class RenderCameraSet(Operator):
 #			self._report_progress()
 
 		if event.type == 'TIMER':
-			still_running = self.thread.is_alive()
+			#still_running = self.thread.is_alive()
 			#with self.summary_mutex:
 			#	percent = 4
 
-			if still_running:
-				wm.progress_update(10)
-				#self._report_progress()
-				return {'PASS_THROUGH'}
+			#if still_running:
+			wm.progress_update(10)
+			#self._report_progress()
+			#return {'PASS_THROUGH'}
 
-			self.thread.join()
+			#self.thread.join()
 			wm.event_timer_remove(self.timer)
 			wm.progress_end()
 			bpy.ops.render.view_show('INVOKE_DEFAULT')
